@@ -50,7 +50,7 @@ MON ROLE
     description: "Projet tutoré consistant a développer une application permettant aux enseignants de gerer l'appel de maniere numérique.",
     tags: 'Vue.js, Rust, MongoDb',
     links: [
-      { label: 'Code', url: 'https://github.com/edegabriel/uniliste' },
+      { label: 'Code', url: 'https://github.com/2ulian/uniliste' },
       { label: 'Documentation', url: '' }
     ],
     details: `ARCHITECTURE
@@ -194,10 +194,27 @@ function App() {
           </div>
         </section>
 
+        <section id="competences" className="row">
+          <div className="row-header">
+            <h2>Competences</h2>
+            <span>socle principale</span>
+          </div>
+          <div className="row-grid">
+            {COMPETENCES.map(skill => (
+              <article key={skill.id} className="poster poster-click" onClick={() => setSelectedSkill(skill)}>
+                <div className="poster-info">
+                  <h3>{skill.title}</h3>
+                  <p>{skill.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section id="projets" className="row">
           <div className="row-header">
             <h2>Projets</h2>
-            <span>Mes projets les plus aboutis</span>
+            <span>Mes projets complet</span>
           </div>
           <div className="projects-timeline">
             {PROJECTS.map((project, index) => (
@@ -228,22 +245,6 @@ function App() {
                   )}
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-        <section id="competences" className="row">
-          <div className="row-header">
-            <h2>Competences</h2>
-            <span>socle principale</span>
-          </div>
-          <div className="row-grid">
-            {COMPETENCES.map(skill => (
-              <article key={skill.id} className="poster poster-click" onClick={() => setSelectedSkill(skill)}>
-                <div className="poster-info">
-                  <h3>{skill.title}</h3>
-                  <p>{skill.description}</p>
-                </div>
-              </article>
             ))}
           </div>
         </section>
