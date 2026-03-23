@@ -1,6 +1,23 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+function SunIcon() {
+  return (
+    <svg className="theme-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+      <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg className="theme-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 13.2A9 9 0 1 1 10.8 3a7 7 0 1 0 10.2 10.2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 const SPORT_SECTIONS = [
   {
     id: 1,
@@ -89,8 +106,13 @@ function Loisirs() {
             <a href="#linux">Linux</a>
             <a href="index.html">Professionel</a>
           </div>
-          <button type="button" className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-            {theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={theme === 'dark' ? 'Passer au mode clair' : 'Passer au mode sombre'}
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
           </button>
         </nav>
       </header>
