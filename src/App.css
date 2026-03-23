@@ -143,6 +143,7 @@
 	max-width: 1100px;
 	margin: 0 auto;
 	padding: 1.5rem 1rem;
+	scroll-margin-top: 100px;
 }
 
 .row-header {
@@ -349,6 +350,22 @@
 	gap: 1rem;
 }
 
+.footer-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding: 1rem 0;
+	border-top: 1px solid var(--surface-border);
+}
+
+.footer-logo {
+	width: 64px;
+	height: 64px;
+	object-fit: contain;
+	border-radius: 12px;
+}
+
 @media (max-width: 720px) {
 	.topbar-inner {
 		flex-direction: column;
@@ -385,6 +402,11 @@
 	.timeline-col.left,
 	.timeline-col.right {
 		justify-content: flex-start;
+	}
+
+	.footer-content {
+		flex-direction: column;
+		align-items: flex-start;
 	}
 }
 
@@ -501,5 +523,25 @@
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--text-muted);
+}
+
+.loisir-emoji {
+	font-size: 3rem;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.loisir-card {
+	text-align: center;
+}
+
+.footer-logo-link {
+	display: inline-block;
+	transition: transform 200ms ease, filter 200ms ease;
+}
+
+.footer-logo-link:hover {
+	transform: translateY(-4px) scale(1.1);
+	filter: drop-shadow(0 8px 16px rgba(var(--accent-rgb), 0.4));
 }
 

@@ -1,4 +1,12 @@
 import { useEffect, useState } from 'react'
+import cCppLogo from './assets/C-C++.png'
+import javaLogo from './assets/java.png'
+import pythonLogo from './assets/python.png'
+import bashLogo from './assets/bash.png'
+import phpLogo from './assets/php.png'
+import mySqlLogo from './assets/mySQL.png'
+import htmlcssLogo from './assets/html-css.png'
+import React from 'react'
 import './App.css'
 
 const PROJECTS = [
@@ -34,7 +42,15 @@ MON ROLE
       { label: 'Rapport', url: '/SAE_gestion_projet_S2.pdf' },
       {label: 'Présentation finale', url: '/diapo_gestion_projet.pdf' }
     ],
-    details: `MON ROLE
+    details: `
+    RÉALISATION
+- Analyse des besoins client  
+- Formalisation des exigences  
+- Mise en place d'outils de gestion  
+- Suivi et pilotage de projet
+- Lancement de la conception d'une application de gestion immobiliere
+
+    MON ROLE
 - Pilote de l'equipe
 - Definition des objectifs SMART
 - Organisation et supervision des réunions
@@ -65,11 +81,76 @@ Responsable du front-end pour l'interface secretariat :
 - Gestion des fonctionnalites avancees (import annuel des etudiants, du personnels et des matières )  
 - Tests d'ergonomie  
 - Intégration des fonctionnalités du cahier des charges
+`
+  }
+]
 
-LIVRABLES
-- Application fonctionnelle  
-- Rapport technique  
-- Schéma de base de donnees`
+const LOISIRS = [
+  {
+    id: 1,
+    title: 'Musique',
+    description: 'Guitare, piano, composition',
+    image: '🎸',
+    details: `PASSIONS MUSICALES
+- Guitare depuis 5 ans
+- Piano en apprentissage
+- Composition de morceaux originaux
+- Écoute éclectique : rock, jazz, électronique`
+  },
+  {
+    id: 2,
+    title: 'Sport',
+    description: 'Musculation, running, outdoor',
+    image: '💪',
+    details: `ACTIVITÉS SPORTIVES
+- Musculation régulière
+- Running en extérieur
+- Randonnées en montagne
+- Objectif : santé et dépassement de soi`
+  },
+  {
+    id: 3,
+    title: 'Jeux vidéo',
+    description: 'RPG, stratégie, multijoueur',
+    image: '🎮',
+    details: `UNIVERS GAMING
+- Jeux de rôle immersifs
+- Jeux de stratégie
+- Sessions multijoueur avec amis
+- Intérêt pour le game design`
+  },
+  {
+    id: 4,
+    title: 'Voyages',
+    description: 'Découverte culturelle, road trips',
+    image: '✈️',
+    details: `EXPÉRIENCES VOYAGE
+- Découverte de nouvelles cultures
+- Road trips en van
+- Visites de villes historiques
+- Photos de voyage`
+  },
+  {
+    id: 5,
+    title: 'Lecture',
+    description: 'SF, développement personnel, tech',
+    image: '📚',
+    details: `LECTURES
+- Science-fiction : Asimov, Philip K. Dick
+- Ouvrages techniques informatique
+- Développement personnel
+- Biographies de pionniers tech`
+  },
+  {
+    id: 6,
+    title: 'Cinéma',
+    description: 'Films cultes, réalisateurs auteurs',
+    image: '🎬',
+    details: `PASSION CINÉMA
+- Films cultes du cinéma
+- Réalisateurs : Nolan, Tarantino, Villeneuve
+- Science-fiction et thrillers
+- Soirées cinéma entre amis`
   }
 ]
 
@@ -79,8 +160,8 @@ const COMPETENCES = [
     title: "Developpement d'application",
     description: 'Concevoir / coder / tester une application',
     details: `REALISER – Niveau 3
-- Élaboration des spécifications  
-- Bonnes pratiques de programmation  
+- Élaboration des spécifications
+- Bonnes pratiques de programmation
 - Developpement d'interfaces utilisateurs
 Projet : UNILISTE`
   },
@@ -168,10 +249,11 @@ function App() {
         <nav className="topbar-inner">
           <div className="nav-links">
             <a href="#top">Accueil</a>
-            <a href="#projets">Projets</a>
             <a href="#competences">Competences</a>
+            <a href="#projets">Projets</a>
             <a href="#parcours">Parcours</a>
             <a href="#contact">Contact</a>
+            <a href="loisirs.html">Loisirs</a>
           </div>
           <button type="button" className="theme-toggle" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             {theme === 'dark' ? 'Mode clair' : 'Mode sombre'}
@@ -189,6 +271,7 @@ function App() {
               gestion de projets, Front-end, reseau
             </p>
             <div className="hero-actions">
+              {/*renvoie direct au projet en cours*/}
               <button className="btn-primary" onClick={() => setSelectedProject(PROJECTS[2])}>Projet en cours</button>
             </div>
           </div>
@@ -200,6 +283,7 @@ function App() {
             <span>socle principale</span>
           </div>
           <div className="row-grid">
+            {/*renvoie pour chaques competences sa description quand on clique dessus*/}
             {COMPETENCES.map(skill => (
               <article key={skill.id} className="poster poster-click" onClick={() => setSelectedSkill(skill)}>
                 <div className="poster-info">
@@ -217,9 +301,11 @@ function App() {
             <span>Mes projets complet</span>
           </div>
           <div className="projects-timeline">
+            {/*affiche chaques projets*/}
             {PROJECTS.map((project, index) => (
               <div key={project.id} className={`timeline-row ${index % 2 === 0 ? 'left' : 'right'}`}>
                 <div className="timeline-col left">
+                  {/*met un projet sur deux de chaques cote de la timeline*/}
                   {index % 2 === 0 && (
                     <article className="poster poster-lg timeline-card" onClick={() => setSelectedProject(project)}>
                       <div className="poster-info">
@@ -286,6 +372,32 @@ function App() {
               <a className="btn-primary" href="mailto:enzodegabriel@orange.fr">enzodegabriel@orange.fr</a>
               <a className="btn-ghost" href="https://edegabriel.github.com/">GitHub</a>
             </div>
+          </div>
+        </section>
+
+        <section id="footer" className="row">
+          <div className="footer-content">
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={cCppLogo} alt="Logo C/C++" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={javaLogo} alt="Logo java" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={pythonLogo} alt="Logo python" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={bashLogo} alt="Logo bash" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={phpLogo} alt="Logo php" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={mySqlLogo} alt="Logo mysql" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={htmlcssLogo} alt="Logo html/css" className="footer-logo" />
+            </a>
           </div>
         </section>
       </main>
