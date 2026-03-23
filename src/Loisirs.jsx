@@ -21,6 +21,12 @@ const SPORT_SECTIONS = [
 ]
 
 const PROJECTS_PERSO = [
+  {
+    id: 1,
+    title: 'Jeu de la vie',
+    description: 'Simulation de la vie et de l\'evolution',
+    details: `j'ai realisé un projet de jeu de la vie en C, c'est un projet qui m'a permis de decouvrir les bases de la programmation, ainsi que les algorithmes de base pour simuler la vie et l'evolution. j'ai choisi de le faire en C car c'est un langage de bas niveau qui permet de comprendre les concepts de la programmation, et qui est aussi tres performant pour ce genre de projet.`
+  }
 ]
 
 const LINUX_SECTIONS = [
