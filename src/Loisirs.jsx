@@ -26,6 +26,12 @@ const PROJECTS_PERSO = [
     title: 'Jeu de la vie',
     description: 'Simulation de la vie et de l\'evolution',
     details: `j'ai realisé un projet de jeu de la vie en C, c'est un projet qui m'a permis de decouvrir les bases de la programmation, ainsi que les algorithmes de base pour simuler la vie et l'evolution. j'ai choisi de le faire en C car c'est un langage de bas niveau qui permet de comprendre les concepts de la programmation, et qui est aussi tres performant pour ce genre de projet.`
+  },
+  {
+    id: 2,
+    title: 'Snake',
+    description: 'Jeu de réflexion',
+    details: `j'ai realisé un projet de jeu Snake en Python, c'est un projet qui m'a permis de decouvrir les bases de la programmation orientée objet, ainsi que les bibliothèques graphiques pour créer une interface utilisateur. j'ai choisi de le faire en Python car c'est un langage de haut niveau qui permet de se concentrer sur la logique du jeu, et qui est aussi tres facile a apprendre pour les débutants.`
   }
 ]
 
