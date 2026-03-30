@@ -32,6 +32,7 @@ const PROJECTS = [
     title: "Création et administration d'un réseau professionnel",
     description: "Conception d'un réseau sécurise avec zones serveur, personnel et clients, et certains postes clients.",
     tags: 'FTP, DHCP',
+    skillIds: [2, 3, 6],
     links: [
       { label: 'Rapport', url: '/Rapport_reseau.pdf' }
     ],
@@ -55,6 +56,7 @@ MON ROLE
     title: 'Gestion de projet immobilier',
     description: 'Projet tutoré sur plusieurs semaines visant à concevoir une application moderne dans le domaine immobilier.',
     tags: 'SWOT, CQQCOQP, SMART',
+    skillIds: [5, 6],
     links: [
       { label: 'Rapport', url: '/SAE_gestion_projet_S2.pdf' },
       {label: 'Présentation finale', url: '/diapo_gestion_projet.pdf' }
@@ -82,9 +84,9 @@ MON ROLE
     title: "UNILISTE – Application numerique d'appel",
     description: "Projet tutoré consistant a développer une application permettant aux enseignants de gerer l'appel de maniere numérique.",
     tags: 'Vue.js, Rust, MongoDb',
+    skillIds: [1, 4, 6],
     links: [
-      { label: 'Code', url: 'https://github.com/2ulian/uniliste' },
-      { label: 'Documentation', url: '' }
+      { label: 'Code', url: 'https://github.com/2ulian/uniliste' }
     ],
     details: `ARCHITECTURE
 - Conception de la base de donnees  
@@ -99,75 +101,6 @@ Responsable du front-end pour l'interface secretariat :
 - Tests d'ergonomie  
 - Intégration des fonctionnalités du cahier des charges
 `
-  }
-]
-
-const LOISIRS = [
-  {
-    id: 1,
-    title: 'Musique',
-    description: 'Guitare, piano, composition',
-    image: '🎸',
-    details: `PASSIONS MUSICALES
-- Guitare depuis 5 ans
-- Piano en apprentissage
-- Composition de morceaux originaux
-- Écoute éclectique : rock, jazz, électronique`
-  },
-  {
-    id: 2,
-    title: 'Sport',
-    description: 'Musculation, running, outdoor',
-    image: '💪',
-    details: `ACTIVITÉS SPORTIVES
-- Musculation régulière
-- Running en extérieur
-- Randonnées en montagne
-- Objectif : santé et dépassement de soi`
-  },
-  {
-    id: 3,
-    title: 'Jeux vidéo',
-    description: 'RPG, stratégie, multijoueur',
-    image: '🎮',
-    details: `UNIVERS GAMING
-- Jeux de rôle immersifs
-- Jeux de stratégie
-- Sessions multijoueur avec amis
-- Intérêt pour le game design`
-  },
-  {
-    id: 4,
-    title: 'Voyages',
-    description: 'Découverte culturelle, road trips',
-    image: '✈️',
-    details: `EXPÉRIENCES VOYAGE
-- Découverte de nouvelles cultures
-- Road trips en van
-- Visites de villes historiques
-- Photos de voyage`
-  },
-  {
-    id: 5,
-    title: 'Lecture',
-    description: 'SF, développement personnel, tech',
-    image: '📚',
-    details: `LECTURES
-- Science-fiction : Asimov, Philip K. Dick
-- Ouvrages techniques informatique
-- Développement personnel
-- Biographies de pionniers tech`
-  },
-  {
-    id: 6,
-    title: 'Cinéma',
-    description: 'Films cultes, réalisateurs auteurs',
-    image: '🎬',
-    details: `PASSION CINÉMA
-- Films cultes du cinéma
-- Réalisateurs : Nolan, Tarantino, Villeneuve
-- Science-fiction et thrillers
-- Soirées cinéma entre amis`
   }
 ]
 
@@ -258,7 +191,18 @@ function App() {
     setSelectedProject(null)
     setSelectedSkill(null)
   }
-  const selectedItem = selectedProject || selectedSkill
+
+  const closeSkillModal = () => {
+    setSelectedSkill(null)
+  }
+
+  const openSkillFromProject = (skillId) => {
+    const skill = COMPETENCES.find(item => item.id === skillId)
+    if (!skill) {
+      return
+    }
+    setSelectedSkill(skill)
+  }
 
   return (
     <div id="top">
@@ -424,21 +368,61 @@ function App() {
         </section>
       </main>
 
-      {selectedItem && (
+      {selectedProject && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
+          <div className="modal-content modal-project-layout" onClick={e => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>&times;</button>
-            <h2>{selectedItem.title}</h2>
-            <p className="modal-details">{selectedItem.details}</p>
-            {selectedItem.links && selectedItem.links.length > 0 && (
+            <aside className="modal-project-aside">
+              <h3>Competences utilisees</h3>
+              <div className="modal-skill-buttons">
+                {selectedProject.skillIds
+                  .map(skillId => COMPETENCES.find(skill => skill.id === skillId))
+                  .filter(Boolean)
+                  .map(skill => (
+                    <button
+                      key={skill.id}
+                      type="button"
+                      className="btn-ghost btn-skill"
+                      onClick={() => openSkillFromProject(skill.id)}
+                    >
+                      {skill.title}
+                    </button>
+                  ))}
+              </div>
+            </aside>
+            <div className="modal-project-main">
+              <h2>{selectedProject.title}</h2>
+              <p className="modal-details">{selectedProject.details}</p>
+              {selectedProject.links && selectedProject.links.length > 0 && (
               <div className="modal-links">
-                {selectedItem.links.map((link, index) => (
+                {selectedProject.links.map((link, index) => (
                   <a key={index} href={link.url} className="btn-ghost" target="_blank" rel="noopener noreferrer">
                     {link.label}
                   </a>
                 ))}
               </div>
-            )}
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!selectedProject && selectedSkill && (
+        <div className="modal-overlay" onClick={closeSkillModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeSkillModal}>&times;</button>
+            <h2>{selectedSkill.title}</h2>
+            <p className="modal-details">{selectedSkill.details}</p>
+          </div>
+        </div>
+      )}
+
+      {selectedProject && selectedSkill && (
+        <div className="modal-overlay modal-overlay-secondary" onClick={closeSkillModal}>
+          <div className="modal-content modal-skill-popup" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeSkillModal}>&times;</button>
+            <h2>{selectedSkill.title}</h2>
+            <p className="modal-details">{selectedSkill.details}</p>
           </div>
         </div>
       )}
