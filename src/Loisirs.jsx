@@ -100,7 +100,7 @@ function Loisirs() {
       <header className="topbar">
         <nav className="topbar-inner">
           <div className="nav-links">
-            <a href="#top">Accueil</a>
+            <a href="index.html">Accueil</a>
             <a href="#sport">Sport</a>
             <a href="#personnal_project">Projets perso</a>
             <a href="#linux">Linux</a>
