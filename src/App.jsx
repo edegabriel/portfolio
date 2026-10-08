@@ -209,12 +209,12 @@ function App() {
       <header className="topbar">
         <nav className="topbar-inner">
           <div className="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="#competences">Competences</a>
-            <a href="#projets">Projets</a>
-            <a href="#parcours">Parcours</a>
-            <a href="#contact">Contact</a>
-            <a href="loisirs.html">Loisirs</a>
+            <a className="nav-page" href="index.html">Accueil</a>
+            <a className="nav-section" href="#competences">Competences</a>
+            <a className="nav-section" href="#projets">Projets</a>
+            <a className="nav-section" href="#parcours">Parcours</a>
+            <a className="nav-section" href="#contact">Contact</a>
+            <a className="nav-page" href="loisirs.html">Loisirs</a>
           </div>
           <button
             type="button"

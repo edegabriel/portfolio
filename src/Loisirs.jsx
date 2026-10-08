@@ -100,11 +100,11 @@ function Loisirs() {
       <header className="topbar">
         <nav className="topbar-inner">
           <div className="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="#sport">Sport</a>
-            <a href="#personnal_project">Projets perso</a>
-            <a href="#linux">Linux</a>
-            <a href="index.html">Professionel</a>
+            <a className="nav-page" href="index.html">Accueil</a>
+            <a className="nav-section" href="#sport">Sport</a>
+            <a className="nav-section" href="#personnal_project">Projets perso</a>
+            <a className="nav-section" href="#linux">Linux</a>
+            <a className="nav-page" href="index.html">Professionel</a>
           </div>
           <button
             type="button"
