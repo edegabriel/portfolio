@@ -6,7 +6,7 @@ import bashLogo from './assets/bash.png'
 import phpLogo from './assets/php.png'
 import mySqlLogo from './assets/mySQL.png'
 import htmlcssLogo from './assets/html-css.png'
-import React from 'react'
+import ciscoLogo from './assets/Cisco-Fuente-600x338.png'
 import './App.css'
 
 function SunIcon() {
@@ -351,6 +351,9 @@ function App() {
             </a>
             <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
               <img src={pythonLogo} alt="Logo python" className="footer-logo" />
+            </a>
+            <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
+              <img src={ciscoLogo} alt="Logo cisco" className="footer-logo" />
             </a>
             <a href="loisirs.html#personnal_project" className="footer-logo-link" title="Découvrir mes projets perso">
               <img src={bashLogo} alt="Logo bash" className="footer-logo" />
